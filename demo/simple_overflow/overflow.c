@@ -1,31 +1,30 @@
-#include <math.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 void secret_function() {
   printf("\nYou have reached the secret code!\n");
 }
 
-void print_pi(){
-  printf("%.4f\n",M_PI);
+void str_to_lowercase(char* buf){
+  for (; *buf; ++buf) {
+    *buf = tolower(*buf);
+  }
 }
 
-int vulnerable_code(){
+void vulnerable_code(){
   char small_buffer[32];
   char input_buffer[256];
-  printf("Enter operation to execute(e.g. pi): ");
+  printf("Enter String to convert to lowercase: ");
   fgets(input_buffer, 256, stdin);
   input_buffer[strcspn(input_buffer, "\n")] = '\0';
   strcpy(small_buffer, input_buffer);
-  return strcmp(small_buffer, "pi");
+  str_to_lowercase(small_buffer);
+  printf("The string '%s' in lowercase is: '%s'\n",input_buffer,small_buffer);
 }
 
 int main(int argc, char *argv[]) {
-  if (vulnerable_code() == 0) {
-    print_pi();
-  } else {
-    printf("Invalid operation!\n");
-  }
+  vulnerable_code();
   return 0;
 }
 
