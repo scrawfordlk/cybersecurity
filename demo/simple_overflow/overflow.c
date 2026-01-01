@@ -7,8 +7,9 @@ void secret_function() {
 }
 
 void str_to_lowercase(char* buf){
-  for (; *buf; ++buf) {
-    *buf = tolower(*buf);
+  int length = strlen(buf);
+  for (int i = 0; i < length; ++i) {
+    buf[i] = tolower(buf[i]);
   }
 }
 
