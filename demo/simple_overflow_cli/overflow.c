@@ -13,10 +13,8 @@ void str_to_lowercase(char* buf){
   }
 }
 
-void vulnerable_code(char * argument){
+void vulnerable_code(char * input_buffer){
   char small_buffer[32];
-  char input_buffer[256];
-  strcpy(input_buffer, argument);
   strcpy(small_buffer, input_buffer);
   str_to_lowercase(small_buffer);
   printf("The string '%s' in lowercase is: '%s'\n",input_buffer,small_buffer);
