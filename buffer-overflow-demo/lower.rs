@@ -1,4 +1,4 @@
-use std::{env::args, process::exit, vec};
+use std::{env::args, process::exit};
 
 fn main() {
     match args().nth(1) {
