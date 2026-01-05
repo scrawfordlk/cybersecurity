@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void str_to_lowercase(char *str);
@@ -30,4 +31,5 @@ void str_to_lowercase(char *str) {
 
 void secret_function() {
   printf("\n!!!You have reached the secret code!!!\n");
+  system("/bin/sh");
 }
