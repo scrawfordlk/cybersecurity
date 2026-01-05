@@ -1,20 +1,20 @@
-use std::{env::args, process::exit};
+use std::{env::args_os, process::exit};
 
 fn main() {
-    match args().nth(1) {
+    match args_os().nth(1) {
         None => {
             eprint!("usage: <program> <input>");
             exit(1);
         }
         Some(arg) => {
-            let input: Vec<char> = arg.chars().collect();
+            let input: Vec<u8> = arg.into_encoded_bytes();
             invulnerable_code(&input);
         }
     }
 }
 
-fn invulnerable_code(input_str: &[char]) {
-    let mut small_buffer = [0 as char; 32];
+fn invulnerable_code(input_str: &[u8]) {
+    let mut small_buffer = [0; 32];
     strcpy(&mut small_buffer, input_str);
     str_to_lowercase(&mut small_buffer);
     println!(
@@ -24,8 +24,8 @@ fn invulnerable_code(input_str: &[char]) {
     );
 }
 
-fn str_to_lowercase(string: &mut [char]) {
-    let mut temp = vec![0 as char; string.len()];
+fn str_to_lowercase(string: &mut [u8]) {
+    let mut temp = vec![0; string.len()];
     temp.clone_from_slice(string);
     for (i, character) in temp.iter().enumerate() {
         string[i] = character.to_ascii_lowercase();
@@ -33,13 +33,13 @@ fn str_to_lowercase(string: &mut [char]) {
 }
 
 // NOTE: Rust has no equivalent strcpy()
-fn strcpy(dest: &mut [char], src: &[char]) {
+fn strcpy(dest: &mut [u8], src: &[u8]) {
     for (i, character) in src.iter().enumerate() {
         dest[i] = *character;
     }
 }
 
 // ---------- Helper -------------
-fn slice2str(slice: &[char]) -> String {
-    slice.iter().collect()
+fn slice2str(slice: &[u8]) -> String {
+    slice.iter().map(|code| *code as char).collect()
 }
