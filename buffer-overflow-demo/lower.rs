@@ -8,13 +8,12 @@ fn main() {
         }
         Some(arg) => {
             let input: Vec<char> = arg.chars().collect();
-            vulnerable_code(&input);
+            invulnerable_code(&input);
         }
     }
 }
 
-// NOTE: Not actually vulnerable
-fn vulnerable_code(input_str: &[char]) {
+fn invulnerable_code(input_str: &[char]) {
     let mut small_buffer = [0 as char; 32];
     strcpy(&mut small_buffer, input_str);
     str_to_lowercase(&mut small_buffer);
@@ -44,4 +43,3 @@ fn strcpy(dest: &mut [char], src: &[char]) {
 fn slice2str(slice: &[char]) -> String {
     slice.iter().collect()
 }
-
