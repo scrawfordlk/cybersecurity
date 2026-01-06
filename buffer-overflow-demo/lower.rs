@@ -24,18 +24,18 @@ fn invulnerable_code(input_str: &[u8]) {
     );
 }
 
+// NOTE: Rust has no equivalent strcpy()
+fn strcpy(dest: &mut [u8], src: &[u8]) {
+    for (i, character) in src.iter().enumerate() {
+        dest[i] = *character;
+    }
+}
+
 fn str_to_lowercase(string: &mut [u8]) {
     let mut temp = vec![0; string.len()];
     temp.clone_from_slice(string);
     for (i, character) in temp.iter().enumerate() {
         string[i] = character.to_ascii_lowercase();
-    }
-}
-
-// NOTE: Rust has no equivalent strcpy()
-fn strcpy(dest: &mut [u8], src: &[u8]) {
-    for (i, character) in src.iter().enumerate() {
-        dest[i] = *character;
     }
 }
 
