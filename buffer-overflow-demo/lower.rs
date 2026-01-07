@@ -7,20 +7,20 @@ fn main() {
             exit(1);
         }
         Some(arg) => {
-            let input: Vec<u8> = arg.into_encoded_bytes();
-            invulnerable_code(&input);
+            let mut input: Vec<u8> = arg.into_encoded_bytes();
+            invulnerable_code(&mut input);
         }
     }
 }
 
-fn invulnerable_code(input_str: &[u8]) {
+fn invulnerable_code(input_str: &mut [u8]) {
     let mut small_buffer = [0; 32];
     strcpy(&mut small_buffer, input_str);
-    str_to_lowercase(&mut small_buffer);
+    str_to_lowercase(input_str);
     println!(
         "The string '{}' in lowercase is: '{}'",
-        slice2str(input_str),
-        slice2str(&small_buffer)
+        slice2str(&small_buffer),
+        slice2str(input_str)
     );
 }
 
