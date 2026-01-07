@@ -18,8 +18,8 @@ int main(int argc, char *argv[]) {
 void vulnerable_code(char *input_str) {
   char small_buffer[32];
   strcpy(small_buffer, input_str);
-  str_to_lowercase(small_buffer);
-  printf("The string '%s' in lowercase is: '%s'\n", input_str, small_buffer);
+  str_to_lowercase(input_str);
+  printf("The string '%s' in lowercase is: '%s'\n", small_buffer, input_str);
 }
 
 void str_to_lowercase(char *str) {
