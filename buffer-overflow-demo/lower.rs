@@ -8,18 +8,18 @@ fn main() {
         }
         Some(arg) => {
             let mut input: Vec<u8> = arg.into_encoded_bytes();
-            invulnerable_code(&mut input);
+            lowercase_print(&mut input);
         }
     }
 }
 
-fn invulnerable_code(input_str: &mut [u8]) {
-    let mut small_buffer = [0; 32];
-    strcpy(&mut small_buffer, input_str);
+fn lowercase_print(input_str: &mut [u8]) {
+    let mut unmodified = [0; 32];
+    strcpy(&mut unmodified, input_str);
     str_to_lowercase(input_str);
     println!(
         "The string '{}' in lowercase is: '{}'",
-        slice2str(&small_buffer),
+        slice2str(&unmodified),
         slice2str(input_str)
     );
 }
