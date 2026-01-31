@@ -1,3 +1,5 @@
 # Cybersecurity
 
-Repository for our code and occasional latex versioning.
+## Software Security
+
+This repository hosts the code used by us in the LV Cybersecurity.
